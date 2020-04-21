@@ -12,6 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag fabricioveronez/k8s-dashboard-csharp:v1
-    - name: Push Image
       run: docker build -t fabricioveronez/k8s-dashboard-csharp:v1 -f .\src\KubernetesApi.Web\Dockerfile .\src\
+    - name: Push Image
+      run: docker push fabricioveronez/k8s-dashboard-csharp:v1
