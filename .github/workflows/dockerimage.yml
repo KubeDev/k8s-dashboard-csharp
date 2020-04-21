@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag fabricioveronez/k8s-dashboard-csharp:v1
+    - name: Push Image
+      run: docker build -t fabricioveronez/k8s-dashboard-csharp:v1 -f .\src\KubernetesApi.Web\Dockerfile .\src\
