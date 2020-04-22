@@ -11,7 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build -t fabricioveronez/k8s-dashboard-csharp:v1 -f ./src/KubernetesApi.Web/Dockerfile ./src/
-    - name: Push Image
-      run: docker push fabricioveronez/k8s-dashboard-csharp:v1
+    - name: Build and Push the Docker image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_LOGIN }}
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        repository: fabricioveronez/k8s-dashboard-csharp
+        tags: latest, v1
+        dockerfile: ./src/KubernetesApi.Web/Dockerfile
+        path: ./src/
+        
