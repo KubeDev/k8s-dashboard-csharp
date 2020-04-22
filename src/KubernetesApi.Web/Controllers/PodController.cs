@@ -19,7 +19,13 @@ namespace KubernetesApi.Web.Controllers
         public IActionResult Index()
         {
             var podList = this._k8s.ListNamespacedPod("fabricioveronez");
-            return View(podList.Items.Select(podItem => new PodViewModel() { Name = podItem.Metadata.Name, Namespace = podItem.Metadata.NamespaceProperty }));
+            return View(podList.Items.Select(podItem => new PodViewModel()
+            {
+                Name = podItem.Metadata.Name,
+                Namespace = podItem.Metadata.NamespaceProperty,
+                Containers = podItem.Spec.Containers.Count,
+                Status = podItem.Status.Phase
+            }));
         }
     }
 }

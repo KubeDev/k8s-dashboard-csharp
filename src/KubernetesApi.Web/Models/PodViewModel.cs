@@ -9,5 +9,7 @@ namespace KubernetesApi.Web.Models
     {
         public string Name { get; set; }
         public string Namespace { get; set; }
+        public int Containers { get; set; }
+        public string Status { get; set; }
     }
 }

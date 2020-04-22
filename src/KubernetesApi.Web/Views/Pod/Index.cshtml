@@ -16,6 +16,12 @@
             <th>
                 Namespace
             </th>
+            <th>
+                Containers
+            </th>
+            <th>
+                Status
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -28,6 +34,13 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Namespace)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Containers)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
                 </td>
             </tr>
         }
