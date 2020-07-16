@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-dashboard-deploy
-spec:
+  name: k8s-dashboard-deploy  
+spec:  
   selector:
     matchLabels:
       app: k8s-dashboard
@@ -11,13 +11,17 @@ spec:
       labels:
         app: k8s-dashboard
     spec:
+      serviceAccountName: user-dashboard
       containers:
       - name: k8s-dashboard
-        image: fabricioveronez/k8s-dashboard-csharp:v1
+        image: fabricioveronez/k8s-dashboard-csharp:v3
         imagePullPolicy: Always
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        # resources:
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "500m"
         ports:
-        - containerPort: 80        
+        - containerPort: 80   
+        env:
+          - name: ASPNETCORE_ENVIRONMENT 
+            value: "Development"

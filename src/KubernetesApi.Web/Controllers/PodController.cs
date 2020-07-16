@@ -16,9 +16,10 @@ namespace KubernetesApi.Web.Controllers
         {
             this._k8s = k8s;
         }
-        public IActionResult Index()
+
+        public IActionResult Index([FromQuery] string ns = "default")
         {
-            var podList = this._k8s.ListNamespacedPod("fabricioveronez");
+            var podList = this._k8s.ListNamespacedPod(ns);
             return View(podList.Items.Select(podItem => new PodViewModel()
             {
                 Name = podItem.Metadata.Name,
