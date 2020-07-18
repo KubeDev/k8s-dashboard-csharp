@@ -16,10 +16,10 @@ spec:
       - name: k8s-dashboard
         image: fabricioveronez/k8s-dashboard-csharp:v3
         imagePullPolicy: Always
-        # resources:
-        #   limits:
-        #     memory: "128Mi"
-        #     cpu: "500m"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 80   
         env:
