@@ -4,5 +4,5 @@ metadata:
   name: dashboard-reader
 rules:
 - apiGroups: [""]
-  resources: ["pods", "namespaces"]
+  resources: ["namespaces", "pods", "services"]
   verbs: ["get", "watch", "list"]

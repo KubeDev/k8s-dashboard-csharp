@@ -8,5 +8,5 @@ subjects:
   namespace: default
 roleRef:
   kind: ClusterRole
-  name: admin
+  name: dashboard-reader
   apiGroup: rbac.authorization.k8s.io  

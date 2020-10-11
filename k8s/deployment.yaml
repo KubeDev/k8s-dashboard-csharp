@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-dashboard-deploy  
+  name: k8s-dashboard-deploy
 spec:  
   selector:
     matchLabels:
@@ -11,7 +11,7 @@ spec:
       labels:
         app: k8s-dashboard
     spec:
-      serviceAccountName: user-dashboard
+      serviceAccount: user-dashboard
       containers:
       - name: k8s-dashboard
         image: kubedevio/k8s-dashboard
